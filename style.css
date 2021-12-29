@@ -36,7 +36,7 @@ body {
 				justify-content: center;
 				grid-template: repeat(5, 1fr) / repeat(5, 1fr);
 				min-height: 100vh;
-				max-height: 100vh;
+  			max-height: 100vh;
 }
 
 .main button {
@@ -48,11 +48,13 @@ body {
 .main button:not(.equal, .sign) {
 				background: var(--bg);
 				width: 20vw;
-				min-height: 10vh;		
+				min-height: 10vh;
+				max-height: 10vh;
 				outline: none;		
 				border: none;
 				font-size: 6vw;
 				cursor: pointer;
+    transition: background 150ms ease-in-out;
 }
 
 .sign {
@@ -65,7 +67,7 @@ body {
 				cursor: pointer;
 }
 
-.main button:hover:not(.equal, [disabled]) {
+.main button:hover:not([disabled], .equal) {
 				background: var(--hover);
 }
 
@@ -100,12 +102,11 @@ body {
 				word-wrap: break-word;
 }
 
-/* this is a button in which scientific tab button is nested */
 .E {
 				position: relative;
-				user-select: none;
 }
 
+/*to open scientific tab*/
 .openBtn {
 				background: var(--bg-two);
 				position: absolute;
@@ -118,10 +119,8 @@ body {
 				justify-content: center;
 				align-items: center;
 				color: var(--font-color-two);
-				transition: transform 400ms ease-in-out;
-				user-select: none;
+			 transition: transform 300ms ease-in-out;
 }
-
 
 .scientific-tab {
 				position: absolute;
@@ -138,8 +137,8 @@ body {
 				opacity: 0;
 				visibility: hidden;
 				pointer-events: none;
-				transition: transform 400ms ease-in-out,
-				visibility 400ms ease-in-out;
+				transition: transform 300ms ease-in-out,
+				visibility 300ms ease-in-out;
 }
 
 .show {
