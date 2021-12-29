@@ -48,7 +48,7 @@ body {
 .main button:not(.equal, .sign) {
 				background: var(--bg);
 				width: 20vw;
-				min-height: 10vh;
+				min-height: 8vh;
 				max-height: 10vh;
 				outline: none;		
 				border: none;
@@ -123,7 +123,7 @@ body {
 }
 
 .scientific-tab {
-				position: absolute;
+				position: fixed;
 				z-index: 2;
 				top: 0;
 				left: 0;
