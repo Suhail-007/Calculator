@@ -1,10 +1,10 @@
-const numbersBtn = document.querySelectorAll('[data-number]');
+const numbersBtn = document.querySelectorAll('.num');
 const currOperandElem = document.querySelector('[data-current-answer]');
 const prevOperandElem = document.querySelector('[data-previous-answer]');
-const operationsBtn = document.querySelectorAll('[data-operation]');
-const deleteBtn = document.querySelector('[data-delete]');
-const allClearBtn = document.querySelector('[data-all-clear]');
-const equalsToBtn = document.querySelector('[data-equals]');
+const operationsBtn = document.querySelectorAll('.operation');
+const deleteBtn = document.querySelector('.delete');
+const allClearBtn = document.querySelector('.all_clear');
+const equalsToBtn = document.querySelector('.equal_to_btn');
 
 
 class Calculator {
@@ -34,6 +34,7 @@ class Calculator {
 
   appendNumber(number) {
     if (number === '.' && this.currentOperand.includes('.')) return;
+    if(this.currentOperand.length > 30) return alert('You cannot add more than 20 digits')
     
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }

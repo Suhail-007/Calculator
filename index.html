@@ -12,32 +12,35 @@
 
 <body>
   <div class="main">
-    <div class="answer">
+    <div class="result_container">
       <div data-previous-answer class="previousAnswer"></div>
       <div data-current-answer class="currentAnswer"></div>
     </div>
-    <button data-number>7</button>
-    <button data-number>8</button>
-    <button data-number>9</button>
-    <button data-operation class="sign">÷</button>
-    <button data-all-clear class="sign">AC</button>
-    <button data-number>4</button>
-    <button data-number>5</button>
-    <button data-number>6</button>
-    <button data-operation class="sign">×</button>
-    <button class="sign openBtn_container" disabled>
-      <div class="openBtn" id="openBtn">&#10094;</div>
-    </button>
-    <button data-number>3</button>
-    <button data-number>2</button>
-    <button data-number>1</button>
-    <button data-operation class="sign">-</button>
-    <button class="sign" id="disabled"></button>
-    <button data-number>.</button>
-    <button data-number>0</button>
-    <button data-equals class="equal">=</button>
-    <button data-operation class="sign">+</button>
-    <button data-delete class="sign">DEL</button>
+
+    <div class="btn_container">
+      <button data-btn="7" class="num">7</button>
+      <button data-btn="8" class="num">8</button>
+      <button data-btn="9" class="num">9</button>
+      <button data-btn="÷" class="sign operation">÷</button>
+      <button data-btn="AC" class="sign all_clear">AC</button>
+      <button data-btn="4" class="num">4</button>
+      <button data-btn="5" class="num">5</button>
+      <button data-btn="6" class="num">6</button>
+      <button data-btn="×" class="sign operation">×</button>
+      <button class="sign openBtn_container" disabled>
+        <div class="openBtn" id="openBtn">&#10094;</div>
+      </button>
+      <button data-btn="1" class="num">1</button>
+      <button data-btn="2" class="num">2</button>
+      <button data-btn="3" class="num">3</button>
+      <button data-btn="-" class="sign operation">-</button>
+      <button class="sign" id="disabled"></button>
+      <button data-btn="." class="num">.</button>
+      <button data-btn="0" class="num">0</button>
+      <button data-btn="=" class="equal equal_to_btn">=</button>
+      <button data-btn="+" class="sign operation">+</button>
+      <button data-btn="DEL" class="sign delete">DEL</button>
+    </div>
   </div>
 
   <div class="scientific-tab" id="scientific-tab">
