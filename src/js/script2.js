@@ -1,10 +1,10 @@
-let numbersBtn = document.querySelectorAll('[data-number]');
-let currentAnswerEle = document.querySelector('[data-current-answer]');
-let previousAnswerEle = document.querySelector('[data-previous-answer]');
-let operationsBtn = document.querySelectorAll('[data-operation]');
-let deleteBtn = document.querySelector('[data-delete]');
-let allClearBtn = document.querySelector('[data-all-clear]');
-let equalsToBtn = document.querySelector('[data-equals]');
+const numbersBtn = document.querySelectorAll('[data-number]');
+const currentAnswerEle = document.querySelector('[data-current-answer]');
+const previousAnswerEle = document.querySelector('[data-previous-answer]');
+const operationsBtn = document.querySelectorAll('[data-operation]');
+const deleteBtn = document.querySelector('[data-delete]');
+const allClearBtn = document.querySelector('[data-all-clear]');
+const equalsToBtn = document.querySelector('[data-equals]');
 
 function printNumbers(number) {
   if (number.innerText === '.' && currentAnswerEle.innerText.includes('.')) return;
@@ -12,13 +12,19 @@ function printNumbers(number) {
 }
 
 function printSigns(operationSigns) {
-  if (currentAnswerEle.innerText != '') {
+
+  if (currentAnswerEle.innerText !== '') {
     currentAnswerEle.innerText += operationSigns;
   }
+
   /*this will move the currentAnswer to previous answer with sign*/
   if (currentAnswerEle.innerText.includes(operationSigns)) {
     previousAnswerEle.innerText = currentAnswerEle.innerText;
     currentAnswerEle.innerText = '';
+  }
+  
+  if (previousAnswerEle.innerText !== '') {
+    compute(operationSigns);
   }
 }
 
@@ -45,6 +51,7 @@ function compute(operationSigns) {
     default:
       return
   }
+
   currentAnswerEle.innerText = computation
   previousAnswerEle.innerText = ""
 }

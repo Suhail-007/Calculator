@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
 :root {
   --bg: #fff;
   --font-color: #000;
@@ -21,40 +23,43 @@
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: Gotham Rounded, sans serif;
+  font-family: 'Caveat', cursive;
 }
 
 body {
   background: var(--bg);
-  font-size: 4vw;
   overflow-x: hidden;
 }
 
 .main {
+  min-height: 100vh;
+  max-height: 100vh;
   display: grid;
   align-content: center;
   justify-content: center;
   grid-template: repeat(5, 1fr) / repeat(5, 1fr);
-  min-height: 100vh;
-  max-height: 100vh;
+}
+
+.main button:not(.equal) {
+  color: var(--font-color);
 }
 
 .main button {
-  color: var(--font-color);
   user-select: none;
   webkit-user-select: none;
+  transition: 200ms ease-in-out;
+  font-size: clamp(2.5rem, 3vw, 2rem);
 }
 
 .main button:not(.equal, .sign) {
   background: var(--bg);
-  width: 20vw;
+  width: 5rem;
   min-height: 8vh;
   max-height: 10vh;
   outline: none;
   border: none;
-  font-size: 6vw;
+  font-size: 2rem;
   cursor: pointer;
-  transition: background 150ms ease-in-out;
 }
 
 .sign {
@@ -67,15 +72,16 @@ body {
   cursor: pointer;
 }
 
-.main button:hover:not([disabled], .equal) {
+.main button:hover:not(#disabled, .equal) {
   background: var(--hover);
 }
 
 .equal {
   background: var(--bg-two);
+  color: #fff;
   outline: none;
   border: none;
-  font-size: 6vw;
+  font-size: clamp(3rem, 3vw, 3.5rem);
 }
 
 .equal:hover {
@@ -104,7 +110,7 @@ body {
   word-wrap: break-word;
 }
 
-.E {
+.openBtn_container {
   position: relative;
 }
 
@@ -116,7 +122,7 @@ body {
   height: 100%;
   top: 0;
   right: 0;
-  border-radius: 5vw 0 0 5vw;
+  border-radius: 2rem 0 0 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,7 +140,7 @@ body {
   background: rgba(55, 55, 55, 0.5);
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
   transform: translateX(100vw);
   opacity: 0;
   visibility: hidden;
@@ -155,8 +161,38 @@ body {
   z-index: 3;
 }
 
-.scientific-operators {
+.scientific-operators-container {
   background: var(--bg-two);
-  height: 70%;
   width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1rem;
+}
+
+.scientific-operators-container button {
+  padding: 1rem;
+  font-size: clamp(2rem, 3vw, 2rem);
+  background: none;
+  outline: none;
+  border: 0.5px solid var(--bg);
+  color: var(--font-color-two);
+}
+
+
+.scientific-operators-container button:first-child,.scientific-operators-container button:nth-child(4), .scientific-operators-container button:nth-child(7), .scientific-operators-container button:nth-child(10)
+{
+  border-left: none;
+}
+
+.scientific-operators-container button:nth-child(3),.scientific-operators-container button:nth-child(6), .scientific-operators-container button:nth-child(9), .scientific-operators-container button:nth-child(12)
+{
+  border-right: none;
+}
+
+.scientific-operators-container button:nth-child(1),.scientific-operators-container button:nth-child(2), .scientific-operators-container button:nth-child(3) {
+  border-top:none;
+}
+
+.scientific-operators-container button:nth-child(10),.scientific-operators-container button:nth-child(11), .scientific-operators-container button:nth-child(12) {
+  border-bottom:none;
 }

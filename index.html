@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Calculator</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/style.css">
   </link>
-  <script src="script.js" defer=""></script>
+  <script src="src/js/script3.js" defer=""></script>
 </head>
 
 <body>
@@ -25,24 +25,35 @@
     <button data-number>5</button>
     <button data-number>6</button>
     <button data-operation class="sign">×</button>
-    <button class="sign E" disabled>
+    <button class="sign openBtn_container" disabled>
       <div class="openBtn" id="openBtn">&#10094;</div>
     </button>
     <button data-number>3</button>
     <button data-number>2</button>
     <button data-number>1</button>
     <button data-operation class="sign">-</button>
-    <button class="sign" disabled></button>
+    <button class="sign" id="disabled"></button>
     <button data-number>.</button>
     <button data-number>0</button>
     <button data-equals class="equal">=</button>
     <button data-operation class="sign">+</button>
     <button data-delete class="sign">DEL</button>
-  </div> <!-- main -->
+  </div>
 
   <div class="scientific-tab" id="scientific-tab">
-    <div class="scientific-operators">
-
+    <div class="scientific-operators-container">
+      <button>√</button>
+      <button>π</button>
+      <button>^</button>
+      <button>!</button>
+      <button>DEG</button>
+      <button>sin</button>
+      <button>cos</button>
+      <button>tan</button>
+      <button>INV</button>
+      <button>e</button>
+      <button>In</button>
+      <button>log</button>
     </div>
   </div>
 </body>
