@@ -5,9 +5,10 @@ const operationsBtn = document.querySelectorAll('.operation');
 const deleteBtn = document.querySelector('.delete');
 const allClearBtn = document.querySelector('.all_clear');
 const equalsToBtn = document.querySelector('.equal_to_btn');
-
+const form = document.querySelector('form');
 
 class Calculator {
+  _input = document.querySelector('input');
   constructor(previousOperand, currentOperand) {
     this.previousOperand = previousOperand;
     this.currentOperand = currentOperand;
@@ -34,9 +35,28 @@ class Calculator {
 
   appendNumber(number) {
     if (number === '.' && this.currentOperand.includes('.')) return;
-    if(this.currentOperand.length > 30) return alert('You cannot add more than 20 digits')
-    
+    if (this.currentOperand.length > 30) return alert('You cannot add more than 20 digits')
+
     this.currentOperand = this.currentOperand.toString() + number.toString();
+  }
+
+  _toggleFormEdit(elem) {
+    elem.classList.toggle('open');
+  }
+
+  getPrevOperandValue() {
+    this._toggleFormEdit(form)
+    this.value = this.previousOperand;
+    this._input.value = parseInt(this.previousOperand);
+  }
+
+  editPrevOperand(e) {
+    e.preventDefault();
+    this._toggleFormEdit(form);
+
+    this.previousOperand = `${parseInt(this._input.value)}${this.operation}`;
+    
+    this.updateDisplay();
   }
 
   operations(operation) {
@@ -61,7 +81,6 @@ class Calculator {
 
       this.compute();
     }
-
   }
 
   compute() {
@@ -91,7 +110,6 @@ class Calculator {
     this.currentOperand = result.toString();
     this.previousOperand = '';
   }
-
 
   updateDisplay() {
     currOperandElem.innerText = this.currentOperand;
@@ -131,17 +149,27 @@ equalsToBtn.addEventListener('click', () => {
   calculator.updateDisplay();
 })
 
-document.getElementById("openBtn").addEventListener("click", () => {
-  document.getElementById("scientific-tab").classList.toggle("show");
-  document.getElementById("openBtn").classList.toggle("w");
+const scientificTab = document.getElementById("scientific-tab");
+const scientificTabBtn = document.querySelector(".openBtn");
 
+scientificTabBtn.addEventListener("click", () => {
+  scientificTab.classList.toggle("open");
+  scientificTabBtn.classList.toggle("move");
 });
 
 /* to close the opened window */
-window.onclick = () => {
-  if (event.target === document.getElementById("scientific-tab")) {
-    document.getElementById("scientific-tab").classList.remove("show")
-    document.getElementById("openBtn").classList.remove("w");
+window.addEventListener('click', (e) => {
+  if (e.target.matches(".scientific-tab")) {
+    scientificTab.classList.remove("open")
+    scientificTabBtn.classList.remove("move");
   }
-  return;
-}
+
+  if (e.target.matches("form")) form.classList.remove('open');
+})
+
+prevOperandElem.addEventListener('click', () => {
+  calculator.getPrevOperandValue();
+  calculator.updateDisplay();
+})
+
+form.addEventListener('submit', calculator.editPrevOperand.bind(calculator));

@@ -12,6 +12,14 @@
 
 <body>
   <div class="main">
+
+    <form>
+      <p>Enter A Number</p>
+      <div class="input_container">
+        <input type="number" placeholder="1234">
+      </div>
+    </form>
+
     <div class="result_container">
       <div data-previous-answer class="previousAnswer"></div>
       <div data-current-answer class="currentAnswer"></div>
@@ -21,28 +29,29 @@
       <button data-btn="7" class="num">7</button>
       <button data-btn="8" class="num">8</button>
       <button data-btn="9" class="num">9</button>
-      <button data-btn="÷" class="sign operation">÷</button>
-      <button data-btn="AC" class="sign all_clear">AC</button>
+      <button data-sign="÷" class="operators operation">÷</button>
+      <button data-sign="AC" class="operators all_clear">AC</button>
       <button data-btn="4" class="num">4</button>
       <button data-btn="5" class="num">5</button>
       <button data-btn="6" class="num">6</button>
-      <button data-btn="×" class="sign operation">×</button>
-      <button class="sign openBtn_container" disabled>
-        <div class="openBtn" id="openBtn">&#10094;</div>
+      <button data-sign="×" class="operators operation">×</button>
+      <button class="disabled" disabled>
+
       </button>
       <button data-btn="1" class="num">1</button>
       <button data-btn="2" class="num">2</button>
       <button data-btn="3" class="num">3</button>
-      <button data-btn="-" class="sign operation">-</button>
-      <button class="sign" id="disabled"></button>
+      <button data-sign="-" class="operators operation">-</button>
+      <button class="disabled" disabled></button>
       <button data-btn="." class="num">.</button>
       <button data-btn="0" class="num">0</button>
-      <button data-btn="=" class="equal equal_to_btn">=</button>
-      <button data-btn="+" class="sign operation">+</button>
-      <button data-btn="DEL" class="sign delete">DEL</button>
+      <button data-sign="=" class="equal equal_to_btn">=</button>
+      <button data-sign="+" class="operators operation">+</button>
+      <button data-sign="DEL" class="operators delete">DEL</button>
     </div>
   </div>
 
+  <div class="openBtn">‹</div>
   <div class="scientific-tab" id="scientific-tab">
     <div class="scientific-operators-container">
       <button>√</button>
