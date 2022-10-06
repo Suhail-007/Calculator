@@ -19,6 +19,7 @@ class Calculator {
     this.currentOperand = '';
     this.previousOperand = '';
     this.operation = undefined;
+    this.updateDisplay()
   }
 
   delete() {
@@ -31,6 +32,7 @@ class Calculator {
       this.currentOperand = this.previousOperand.toString().slice(0, -1);
       this.previousOperand = ''
     }
+    this.updateDisplay()
   }
 
   appendNumber(number) {
@@ -38,6 +40,7 @@ class Calculator {
     if (this.currentOperand.length > 30) return alert('You cannot add more than 20 digits')
 
     this.currentOperand = this.currentOperand.toString() + number.toString();
+    this.updateDisplay();
   }
 
   _toggleFormEdit(elem) {
@@ -45,6 +48,7 @@ class Calculator {
   }
 
   getPrevOperandValue() {
+    if (this.previousOperand === '') return
     this._toggleFormEdit(form)
     this.value = this.previousOperand;
     this._input.value = parseInt(this.previousOperand);
@@ -55,7 +59,7 @@ class Calculator {
     this._toggleFormEdit(form);
 
     this.previousOperand = `${parseInt(this._input.value)}${this.operation}`;
-    
+
     this.updateDisplay();
   }
 
@@ -71,6 +75,7 @@ class Calculator {
     this.currentOperand += this.operation;
     this.previousOperand = this.currentOperand;
     this.currentOperand = '';
+    this.updateDisplay()
   }
 
   changeOperation(operation) {
@@ -80,6 +85,7 @@ class Calculator {
       this.previousOperand += this.operation;
 
       this.compute();
+      this.updateDisplay()
     }
   }
 
@@ -109,6 +115,7 @@ class Calculator {
 
     this.currentOperand = result.toString();
     this.previousOperand = '';
+    this.updateDisplay();
   }
 
   updateDisplay() {
@@ -122,7 +129,6 @@ const calculator = new Calculator(prevOperandElem, currOperandElem);
 numbersBtn.forEach(btn => {
   btn.addEventListener('click', () => {
     calculator.appendNumber(btn.innerText);
-    calculator.updateDisplay();
   })
 })
 
@@ -130,24 +136,14 @@ operationsBtn.forEach(operationBtn => {
   operationBtn.addEventListener('click', () => {
     calculator.operations(operationBtn.innerText);
     calculator.changeOperation(operationBtn.innerText);
-    calculator.updateDisplay()
   })
 })
 
-allClearBtn.addEventListener('click', () => {
-  calculator.clearAll()
-  calculator.updateDisplay()
-})
+allClearBtn.addEventListener('click', calculator.clearAll.bind(calculator))
 
-deleteBtn.addEventListener('click', () => {
-  calculator.delete();
-  calculator.updateDisplay();
-})
+deleteBtn.addEventListener('click', calculator.delete.bind(calculator))
 
-equalsToBtn.addEventListener('click', () => {
-  calculator.compute();
-  calculator.updateDisplay();
-})
+equalsToBtn.addEventListener('click', calculator.compute.bind(calculator))
 
 const scientificTab = document.getElementById("scientific-tab");
 const scientificTabBtn = document.querySelector(".openBtn");
@@ -169,7 +165,6 @@ window.addEventListener('click', (e) => {
 
 prevOperandElem.addEventListener('click', () => {
   calculator.getPrevOperandValue();
-  calculator.updateDisplay();
 })
 
 form.addEventListener('submit', calculator.editPrevOperand.bind(calculator));

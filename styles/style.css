@@ -51,7 +51,8 @@ body {
 .main button[data-sign]:hover::before,
 .main button[data-sign]:focus::before,
 .openBtn,
-form {
+form,
+.input_container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,6 +71,7 @@ form {
   z-index: 5;
   background: rgba(10, 10, 10, .3);
   transition: 200ms ease-in-out, opacity 200ms ease-in-out;
+  
 }
 
 form.open {
@@ -80,13 +82,23 @@ form.open {
 
 form p {
   color: var(--font-color-two);
-  font-size: clamp(1rem, 3vw, 2rem);
+  font-size: clamp(2rem, 2vw, 3rem);
+}
+
+.input_container {
+  flex-direction: column;
 }
 
 .input_container input {
   font-size: clamp(1rem, 3vw, 2rem);
   padding: 0.5rem;
   outline: none;
+  margin-bottom: 1rem;
+}
+
+.input_container button {
+  font-size: 1rem;
+  padding: .5rem 1rem;
 }
 
 .result_container {
@@ -233,13 +245,31 @@ form p {
   background: rgba(55, 55, 55, 0.5);
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
   transform: translateX(100vw);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: transform 300ms ease-in-out,
     visibility 300ms ease-in-out;
+}
+
+.scientific-operators-container {
+  background: var(--bg-two);
+  width: 80%;
+  height: 50%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 2rem;
+}
+
+.scientific-operators-container button {
+  padding: .5rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  background: none;
+  outline: none;
+  border: 0.5px solid var(--bg);
+  color: var(--font-color-two);
 }
 
 .open {
@@ -253,24 +283,6 @@ form p {
   transform: translateX(-80vw);
   z-index: 3;
 }
-
-.scientific-operators-container {
-  background: var(--bg-two);
-  width: 80%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 1rem;
-}
-
-.scientific-operators-container button {
-  padding: 1rem;
-  font-size: clamp(2rem, 3vw, 2rem);
-  background: none;
-  outline: none;
-  border: 0.5px solid var(--bg);
-  color: var(--font-color-two);
-}
-
 
 .scientific-operators-container button:first-child,
 .scientific-operators-container button:nth-child(4),
