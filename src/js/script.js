@@ -9,6 +9,7 @@ const form = document.querySelector('form');
 
 class Calculator {
   _input = document.querySelector('input');
+  
   constructor(previousOperand, currentOperand) {
     this.previousOperand = previousOperand;
     this.currentOperand = currentOperand;
@@ -79,8 +80,8 @@ class Calculator {
   }
 
   changeOperation(operation) {
-    this.operation = operation;
     if (this.previousOperand !== '' && this.currentOperand === '') {
+      this.operation = operation;
       this.previousOperand = this.previousOperand.toString().slice(0, -1);
       this.previousOperand += this.operation;
 
