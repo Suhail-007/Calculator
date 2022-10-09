@@ -6,10 +6,11 @@ const deleteBtn = document.querySelector('.delete');
 const allClearBtn = document.querySelector('.all_clear');
 const equalsToBtn = document.querySelector('.equal_to_btn');
 const form = document.querySelector('form');
+const threeDotsMenu = document.querySelector('.dot_menu');
 
 class Calculator {
   _input = document.querySelector('input');
-  
+
   constructor(previousOperand, currentOperand) {
     this.previousOperand = previousOperand;
     this.currentOperand = currentOperand;
@@ -119,6 +120,42 @@ class Calculator {
     this.updateDisplay();
   }
 
+  closeScientificTab(e) {
+    if (e.target.matches(".scientific-tab")) {
+      scientificTab.classList.remove("open")
+      scientificTabBtn.classList.remove("move");
+    }
+
+    if (e.target.matches("form")) form.classList.remove('open');
+
+    //DROP DOWN**************
+    const isDotMenu = e.target.matches('.dot_menu_btn');
+
+    if (!isDotMenu && e.target.closest('.dot_menu') != null) return
+
+    const dotMenuItems = document.querySelector('.dot_menu_items');
+
+    if (isDotMenu) dotMenuItems.classList.add('active');
+    else dotMenuItems.classList.remove('active');
+  }
+
+  dotMenu(e) {
+    const body = document.body;
+
+    const dataset = e.target.dataset?.theme;
+    if (!dataset) return;
+
+    dataset === 'system default' ? this._systemDefaultTheme(body) : dataset === 'light' ? body.classList.remove('dark') : dataset === 'dark' ? body.classList.add('dark') : '';
+  }
+
+  _systemDefaultTheme(body) {
+    const hours = new Date().getHours();
+    const isDayTime = hours > 18 || hours < 6;
+
+    if (isDayTime) body.classList.add('dark');
+    else body.classList.remove('dark');
+  }
+
   updateDisplay() {
     currOperandElem.innerText = this.currentOperand;
     prevOperandElem.innerText = this.previousOperand;
@@ -154,18 +191,12 @@ scientificTabBtn.addEventListener("click", () => {
   scientificTabBtn.classList.toggle("move");
 });
 
-/* to close the opened window */
-window.addEventListener('click', (e) => {
-  if (e.target.matches(".scientific-tab")) {
-    scientificTab.classList.remove("open")
-    scientificTabBtn.classList.remove("move");
-  }
-
-  if (e.target.matches("form")) form.classList.remove('open');
-})
-
 prevOperandElem.addEventListener('click', () => {
   calculator.getPrevOperandValue();
 })
 
 form.addEventListener('submit', calculator.editPrevOperand.bind(calculator));
+
+document.addEventListener('click', calculator.closeScientificTab);
+
+threeDotsMenu.addEventListener('click', calculator.dotMenu.bind(calculator));
