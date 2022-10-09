@@ -3,21 +3,30 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
   <link rel="stylesheet" href="styles/style.css">
   </link>
   <script src="src/js/script.js" defer=""></script>
 </head>
-
-<body>
-  <div class="main">
+<body >
+  
+  <div class="dot_menu">
+    <span class="dot_menu_btn">...</span>
+    <div class="dot_menu_items">
+      <p data-theme="system default">System default</p>
+      <p data-theme="light">Light Theme</p>
+      <p data-theme="dark">Dark Theme</p>
+    </div>
+  </div>
+  
+  <main class="main">
 
     <form>
       <p>Enter A Number</p>
       <div class="input_container">
         <input type="number" placeholder="1234">
-        <button type="submit"></button>
+        <button type="submit">Edit</button>
       </div>
     </form>
 
@@ -50,25 +59,25 @@
       <button data-sign="+" class="operators operation">+</button>
       <button data-sign="DEL" class="operators delete">DEL</button>
     </div>
-  </div>
-
-  <div class="openBtn">‹</div>
-  <div class="scientific-tab" id="scientific-tab">
-    <div class="scientific-operators-container">
-      <button>√</button>
-      <button>π</button>
-      <button>^</button>
-      <button>!</button>
-      <button>DEG</button>
-      <button>sin</button>
-      <button>cos</button>
-      <button>tan</button>
-      <button>INV</button>
-      <button>e</button>
-      <button>In</button>
-      <button>log</button>
     </div>
-  </div>
+
+    <div class="openBtn">‹</div>
+    <div class="scientific-tab" id="scientific-tab">
+      <div class="scientific-operators-container">
+        <button>√</button>
+        <button>π</button>
+        <button>^</button>
+        <button>!</button>
+        <button>DEG</button>
+        <button>sin</button>
+        <button>cos</button>
+        <button>tan</button>
+        <button>INV</button>
+        <button>e</button>
+        <button>In</button>
+        <button>log</button>
+      </div>
+  </main>
 </body>
 
 </html>
