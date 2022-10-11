@@ -66,7 +66,7 @@ class Calculator {
   }
 
   operations(operation) {
-    if (this.currentOperand === '') return
+    if (this.currentOperand === '' || this.currentOperand === '.') return
     if (this.previousOperand !== '') {
       this.operation = undefined;
       this.operation = operation
@@ -92,7 +92,6 @@ class Calculator {
   }
 
   compute() {
-
     if (this.previousOperand === '' || this.currentOperand === '') return
 
     const prev = parseFloat(this.previousOperand);
@@ -150,8 +149,8 @@ class Calculator {
 
   _systemDefaultTheme(body) {
     const hours = new Date().getHours();
-    const isDayTime = hours > 18 || hours < 6;
-
+    const isDayTime = hours >= 18 || hours <= 6;
+    
     if (isDayTime) body.classList.add('dark');
     else body.classList.remove('dark');
   }
