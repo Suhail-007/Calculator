@@ -150,7 +150,7 @@ class Calculator {
   _systemDefaultTheme(body) {
     const hours = new Date().getHours();
     const isDayTime = hours >= 18 || hours <= 6;
-    
+
     if (isDayTime) body.classList.add('dark');
     else body.classList.remove('dark');
   }
@@ -161,41 +161,52 @@ class Calculator {
   }
 }
 
-const calculator = new Calculator(prevOperandElem, currOperandElem);
+const init = function() {
+  const scientificTab = document.getElementById("scientific-tab");
+  const scientificTabBtn = document.querySelector(".openBtn");
+  
+  const calculator = new Calculator(prevOperandElem, currOperandElem);
 
-numbersBtn.forEach(btn => {
-  btn.addEventListener('click', () => {
-    calculator.appendNumber(btn.innerText);
+  numbersBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+      calculator.appendNumber(btn.innerText);
+    })
   })
-})
 
-operationsBtn.forEach(operationBtn => {
-  operationBtn.addEventListener('click', () => {
-    calculator.operations(operationBtn.innerText);
-    calculator.changeOperation(operationBtn.innerText);
+  operationsBtn.forEach(operationBtn => {
+    operationBtn.addEventListener('click', () => {
+      calculator.operations(operationBtn.innerText);
+      calculator.changeOperation(operationBtn.innerText);
+    })
   })
-})
 
-allClearBtn.addEventListener('click', calculator.clearAll.bind(calculator))
+  allClearBtn.addEventListener('click', calculator.clearAll.bind(calculator))
 
-deleteBtn.addEventListener('click', calculator.delete.bind(calculator))
+  deleteBtn.addEventListener('click', calculator.delete.bind(calculator))
 
-equalsToBtn.addEventListener('click', calculator.compute.bind(calculator))
+  equalsToBtn.addEventListener('click', calculator.compute.bind(calculator))
 
-const scientificTab = document.getElementById("scientific-tab");
-const scientificTabBtn = document.querySelector(".openBtn");
+  //open btn scientific Tab
+  scientificTabBtn.addEventListener("click", () => {
+    scientificTab.classList.toggle("open");
+    scientificTabBtn.classList.toggle("move");
+  });
 
-scientificTabBtn.addEventListener("click", () => {
-  scientificTab.classList.toggle("open");
-  scientificTabBtn.classList.toggle("move");
-});
+  //prevOperand value event listener
+  prevOperandElem.addEventListener('click', () => {
+    calculator.getPrevOperandValue();
+  })
 
-prevOperandElem.addEventListener('click', () => {
-  calculator.getPrevOperandValue();
-})
+  //edit form 
+  form.addEventListener('submit', calculator.editPrevOperand.bind(calculator));
 
-form.addEventListener('submit', calculator.editPrevOperand.bind(calculator));
+  //clodebtn
+  document.addEventListener('click', calculator.closeScientificTab);
 
-document.addEventListener('click', calculator.closeScientificTab);
+  //menu
+  threeDotsMenu.addEventListener('click', calculator.dotMenu.bind(calculator));
 
-threeDotsMenu.addEventListener('click', calculator.dotMenu.bind(calculator));
+}
+
+//initialize the event listener
+init();

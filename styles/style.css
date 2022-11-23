@@ -28,15 +28,21 @@
   --dotsMenuShadow: rgba(255, 255, 255, 1);
 }
 
-* {
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
   box-sizing: border-box;
 }
 
 body {
   background: var(--bg);
   overflow-x: hidden;
-  margin: 0;
-  padding: 0;
 }
 
 .dot_menu {
@@ -78,7 +84,6 @@ body {
 
 main {
   min-height: 100vh;
-  max-height: 100vh;
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
