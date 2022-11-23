@@ -84,8 +84,8 @@ class Calculator {
     if (this.previousOperand !== '' && this.currentOperand === '') {
       this.operation = operation;
       this.previousOperand = this.previousOperand.toString().slice(0, -1);
-      this.previousOperand += this.operation;
 
+      this.previousOperand += this.operation;
       this.compute();
       this.updateDisplay()
     }
@@ -161,10 +161,15 @@ class Calculator {
   }
 }
 
+const showInfo = function() {
+  const parent = document.querySelector('.info__tab__container');
+   parent.classList.add('hidden');
+}
+
 const init = function() {
   const scientificTab = document.getElementById("scientific-tab");
   const scientificTabBtn = document.querySelector(".openBtn");
-  
+
   const calculator = new Calculator(prevOperandElem, currOperandElem);
 
   numbersBtn.forEach(btn => {
@@ -205,8 +210,9 @@ const init = function() {
 
   //menu
   threeDotsMenu.addEventListener('click', calculator.dotMenu.bind(calculator));
-
 }
+
+setTimeout(showInfo, 5000);
 
 //initialize the event listener
 init();

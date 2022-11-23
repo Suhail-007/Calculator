@@ -45,6 +45,38 @@ body {
   overflow-x: hidden;
 }
 
+/* info tab */
+.info__tab__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .4);
+  z-index: 5;
+  transition: all .3s;
+}
+
+.info__tab__container.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.info__tab {
+  background: var(--bg);
+  flex-direction: column;
+  margin: 0 2rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 1rem 0 5rem var(--dotsMenuShadow);
+}
+
+.info__tab>p {
+  margin: .5rem 1rem;
+  padding: 0;
+}
+
 .dot_menu {
   position: fixed;
   top: 1%;
@@ -70,12 +102,15 @@ body {
   margin-left: .2rem;
   border-radius: 0 .7rem .7rem .7rem;
   opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
   transition: height 500ms ease-in-out, opacity 300ms ease-in-out;
   box-shadow: 1px 0px 5px 0px var(--dotsMenuShadow);
 }
 
 .dot_menu_items.active {
   pointer-events: auto;
+  visibility: visible;
   opacity: 1;
 }
 
@@ -101,7 +136,9 @@ main button[data-sign]:hover::before,
 main button[data-sign]:focus::before,
 .openBtn,
 form,
-.input_container {
+.input_container,
+.info__tab__container,
+.info__tab {
   display: flex;
   align-items: center;
   justify-content: center;
