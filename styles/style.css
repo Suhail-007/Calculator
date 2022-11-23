@@ -66,10 +66,11 @@ body {
   background: var(--dotsMenuBg);
   color: var(--dotsMenuFont);
   user-select: none;
-  transition: height 500ms ease-in-out, opacity 300ms ease-in-out;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  margin-left: .2rem;
+  border-radius: 0 .7rem .7rem .7rem;
   opacity: 0;
+  transition: height 500ms ease-in-out, opacity 300ms ease-in-out;
   box-shadow: 1px 0px 5px 0px var(--dotsMenuShadow);
 }
 
@@ -80,6 +81,7 @@ body {
 
 .dot_menu_items p {
   font-size: 1rem;
+  padding-block: .5rem;
 }
 
 main {
