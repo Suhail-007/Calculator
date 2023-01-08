@@ -139,18 +139,27 @@ class Calculator {
   }
 
   dotMenu(e) {
+    const infoTab = document.querySelector('.info__tab__container');
+
     const body = document.body;
 
-    const dataset = e.target.dataset?.theme;
+    const dataset = e.target.dataset?.option;
     if (!dataset) return;
 
-    dataset === 'system default' ? this._systemDefaultTheme(body) : dataset === 'light' ? body.classList.remove('dark') : dataset === 'dark' ? body.classList.add('dark') : '';
+    dataset === 'system default' ? this.systemDefaultTheme() : dataset === 'light' ? body.classList.remove('dark') : dataset === 'dark' ? body.classList.add('dark') : infoTab.classList.remove('hidden');
+    
+    if (dataset === 'info') {
+      setTimeout(() => {
+        infoTab.classList.add('hidden');
+      }, 4000);
+      return
+    }
   }
 
-  _systemDefaultTheme(body) {
+  systemDefaultTheme() {
+    const body = document.body;
     const hours = new Date().getHours();
     const isDayTime = hours >= 18 || hours <= 6;
-
     if (isDayTime) body.classList.add('dark');
     else body.classList.remove('dark');
   }
@@ -161,9 +170,9 @@ class Calculator {
   }
 }
 
-const showInfo = function() {
+const hideInfoTab = function() {
   const parent = document.querySelector('.info__tab__container');
-   parent.classList.add('hidden');
+  parent.classList.add('hidden');
 }
 
 const init = function() {
@@ -210,9 +219,10 @@ const init = function() {
 
   //menu
   threeDotsMenu.addEventListener('click', calculator.dotMenu.bind(calculator));
-}
 
-setTimeout(showInfo, 5000);
+  //init system default theme
+  calculator.systemDefaultTheme();
+}
 
 //initialize the event listener
 init();
